@@ -47,13 +47,6 @@ async function api(action,data={}){
 
 }
 
-function log(t,c="sys"){
-let d=document.createElement("div");
-d.className="msg "+c;
-d.textContent=t;
-chat.appendChild(d);
-chat.scrollTop=chat.scrollHeight;
-}
 
 function draw(){
 
@@ -134,7 +127,7 @@ sdp:peer.pc.localDescription
 localSDP.value=offerData;
 
 
-log("Offer dibuat & dikirim");
+log("Offer dibuat");
 
 };
 $("btnAnswer").onclick=async()=>{
@@ -197,7 +190,7 @@ const answerData=JSON.stringify({
 localSDP.value=answerData;
 
 
-log("Answer dibuat & dikirim");
+log("Answer dibuat");
 
 }else{
 
@@ -329,3 +322,12 @@ $("btnFetch").onclick = async ()=>{
     }
 
 };
+function log(t,c="sys"){
+    const d=document.createElement("div");
+    d.className="msg "+c;
+
+    d.innerHTML=`<div class="bubble">${t}</div>`;
+
+    chat.appendChild(d);
+    chat.scrollTop=chat.scrollHeight;
+}
