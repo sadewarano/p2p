@@ -266,3 +266,19 @@ button:disabled{
     color:#555;
     font-size:13px;
 }
+#peerList{
+    margin-top:10px;
+}
+
+.peer-item{
+    padding:10px 12px;
+    margin-bottom:8px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    background:#fff;
+    cursor:pointer;
+}
+
+.peer-item:hover{
+    background:#f5f5f5;
+}
