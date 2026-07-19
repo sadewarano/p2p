@@ -9,112 +9,150 @@
 
 <body>
 
-
 <header>
 
-<div class="profile">
+    <div class="profile">
+        <div id="peerName">
+            🌐 P2P Chat
+        </div>
 
-<div id="peerName">
-🌐 P2P Chat
-</div>
-
-<small id="status">
-Belum Konek
-</small>
-
-</div>
-
-
-<button id="btnSetting">
-⚙️
-</button>
+        <small id="status">
+            Belum Konek
+        </small>
+    </div>
 
 </header>
 
 
+<div class="tabs">
 
-<div class="layout">
+    <button class="tab active"
+        onclick="showTab('connection')">
+        Koneksi
+    </button>
 
-
-<div class="chat">
-
-<div id="chatBox">
-</div>
-
-
-<div class="input">
-
-<input id="msgInput"
-placeholder="Ketik pesan...">
-
-
-<button id="btnSend" disabled>
-➤
-</button>
-
-
-</div>
+    <button class="tab"
+        onclick="showTab('chat')">
+        Chat
+    </button>
 
 </div>
 
 
+<!-- ===================== -->
+<!-- TAB KONEKSI -->
+<!-- ===================== -->
+
+<div id="connectionTab">
+
+    <div id="connectionBox" class="card">
+
+        <h3>Koneksi Baru</h3>
+
+        <textarea
+            id="localSDP"
+            readonly
+            placeholder="Kode saya">
+        </textarea>
+
+        <div class="row">
+
+            <button id="btnCopy">
+                📋 Copy
+            </button>
+
+            <button id="btnUpload">
+                ☁️ Kirim
+            </button>
+
+        </div>
+
+        <textarea
+            id="remoteSDP"
+            placeholder="Tempel kode teman">
+        </textarea>
+
+        <div class="row">
+
+            <button id="btnFetch">
+                📥 Ambil
+            </button>
+
+        </div>
+
+        <div class="row">
+
+            <button id="btnOffer">
+                🟢 Buat
+            </button>
+
+            <button id="btnAnswer">
+                🔵 Proses
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
 
+<!-- ===================== -->
+<!-- TAB CHAT -->
+<!-- ===================== -->
 
-<div id="connectionBox" class="card hidden">
+<div id="chatTab" style="display:none;">
 
-<h3>Koneksi Baru</h3>
+    <div class="layout">
 
+        <div class="chat">
 
-<textarea id="localSDP"
-readonly
-placeholder="Kode saya">
-</textarea>
+            <div id="chatBox">
+            </div>
 
-<div class="row">
-<button id="btnCopy">
-📋 Copy
-</button>
+            <div class="input">
 
-<button id="btnUpload">
-☁️ Kirim
-</button>
+                <input
+                    id="msgInput"
+                    placeholder="Ketik pesan...">
 
-</div>
+                <button
+                    id="btnSend"
+                    disabled>
+                    ➤
+                </button>
 
-<textarea id="remoteSDP"
-placeholder="Tempel kode teman">
-</textarea>
+            </div>
 
-<div class="row">
+        </div>
 
-<button id="btnFetch">
-📥 Ambil
-</button>
-
-</div>
-
-<div class="row">
-
-<button id="btnOffer">
-🟢 Buat
-</button>
-
-<button id="btnAnswer">
-🔵 Proses
-</button>
+    </div>
 
 </div>
-
-</div>
-
 
 
 <div id="toast">
-Tersalin
+    Tersalin
 </div>
 
+
+<script>
+
+function showTab(tab){
+
+    document.getElementById("connectionTab").style.display =
+        tab==="connection" ? "block" : "none";
+
+    document.getElementById("chatTab").style.display =
+        tab==="chat" ? "block" : "none";
+
+    const tabs=document.querySelectorAll(".tab");
+
+    tabs[0].classList.toggle("active",tab==="connection");
+    tabs[1].classList.toggle("active",tab==="chat");
+}
+
+</script>
 
 <script src="app.js"></script>
 
